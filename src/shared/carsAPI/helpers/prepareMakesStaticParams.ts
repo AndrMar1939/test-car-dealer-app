@@ -1,7 +1,7 @@
 import type { VehicleMake, MakeIdParams } from '@/types';
 
 export const prepareMakesStaticParams = (response: { Results?: unknown }): MakeIdParams[] => {
-  if (response.Results) {
+  if (response?.Results) {
     const vehicleMakers = response.Results as VehicleMake[];
 
     const slugs = vehicleMakers

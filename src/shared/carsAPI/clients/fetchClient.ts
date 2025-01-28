@@ -11,7 +11,8 @@ export async function fetchClient<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    // eslint-disable-next-line no-console
+    console.error(`HTTP error! status: ${response?.status}`);
   }
 
   return response.json() as Promise<T>;

@@ -17,6 +17,8 @@ export async function generateStaticParams(): Promise<YearParams[]> {
 const Page: FC<PageProps> = async ({ params }) => {
   const cars = await fetchResultPageData(params);
 
+  console.log(cars);
+
   if (!cars.length) {
     return <EmptyData />;
   }
