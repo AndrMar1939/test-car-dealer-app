@@ -32,10 +32,10 @@ On the real project you should create a new .env.local file based on the provide
 
 ## Key Features
 
-**Caching**: The home page data is cached for 1 hour to improve performance.
-**Incremental Static Regeneration (ISR)**: The results page uses ISR to ensure efficient rendering and dynamic updates.
-**Husky Pre-Commit Hook**: Automatically checks files before committing to maintain code quality.
-**Prettier and ESLint Config with Tailwind Plugins**: Ensures consistent and formatted code with support for Tailwind-specific rules.
+- **Caching**: The home page data is cached for 1 hour to improve performance.
+- **Incremental Static Regeneration (ISR)**: The results page uses ISR to ensure efficient rendering and dynamic updates.
+- **Husky Pre-Commit Hook**: Automatically checks files before committing to maintain code quality.
+- **Prettier and ESLint Config with Tailwind Plugins**: Ensures consistent and formatted code with support for Tailwind-specific rules.
 
 ## Directory Structure
 The project follows the **feature list methodology** for organizing files and directories, ensuring scalability and maintainability.
