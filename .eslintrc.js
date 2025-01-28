@@ -40,7 +40,7 @@ module.exports = {
     'react/require-default-props': 0,
     'no-param-reassign': 0,
     'global-require': 0,
-    'arrow-parens': ["error", "as-needed"],
+    'arrow-parens': ['error', 'as-needed'],
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
