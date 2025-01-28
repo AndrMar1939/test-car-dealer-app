@@ -70,8 +70,13 @@ export const VehicleInputs: FC<VehicleInputsProps> = ({ vehicleMakes }) => {
         className={`block w-full text-center py-2 px-4 rounded mt-4 ${
           isNextLinkEnabled
             ? 'bg-blue-500 text-white hover:bg-blue-600'
-            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            : 'bg-gray-300 text-gray-500'
         }`}
+        aria-disabled={!isNextLinkEnabled}
+        tabIndex={isNextLinkEnabled ? undefined : -1}
+        style={{
+          pointerEvents: (isNextLinkEnabled) ? 'auto' : 'none',
+        }}
       >
         Next
       </Link>
