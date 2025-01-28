@@ -1,5 +1,5 @@
 import { fetchClient } from './clients';
-import type { VehicleMake } from '@/types';
+import { extractCarsMakers } from './helpers';
 
 const { BASE_URL } = process.env;
 
@@ -7,7 +7,7 @@ export async function getCarMakes(options?: RequestInit) {
   const response = await fetchClient<unknown>(
     `${BASE_URL}/vehicles/GetMakesForVehicleType/car?format=json`,
     { ...options },
-  );
+  ) as { Results?: unknown };
 
-  return response;
+  return extractCarsMakers(response);
 }
