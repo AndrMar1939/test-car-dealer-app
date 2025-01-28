@@ -13,3 +13,7 @@ export { Routes } from './constants/routes';
 export * from './constants/constants';
 
 export { createYearsStaticParams } from './helpers/createYearsStaticParams';
+
+export { HomeLink } from './UI/HomeLink/HomeLink';
+
+export { EmptyData } from './UI/EmptyData/EmptyData';

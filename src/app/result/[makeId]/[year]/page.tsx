@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import type { YearParams } from '@/types';
-import { createYearsStaticParams } from '@/shared';
+import { createYearsStaticParams, EmptyData } from '@/shared';
 import { fetchMakesStaticParams, fetchResultPageData } from '@/shared/carsAPI';
+import { ResultPage } from '@/widgets';
 
 interface PageProps {
   params: YearParams;
@@ -9,17 +10,18 @@ interface PageProps {
 
 export async function generateStaticParams(): Promise<YearParams[]> {
   const makes = await fetchMakesStaticParams();
+
   return createYearsStaticParams(makes);
 }
 
 const Page: FC<PageProps> = async ({ params }) => {
-  const pageContent = await fetchResultPageData(params);
+  const cars = await fetchResultPageData(params);
 
-  if (!pageContent.length) {
-    return <h2>no data</h2>;
+  if (!cars.length) {
+    return <EmptyData />;
   }
 
-  return <h2>page</h2>;
+  return <ResultPage cars={cars} />;
 };
 
 export default Page;
