@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import { getCarMakes } from '@/shared/carsAPI';
+import { VehicleInputs } from './UI';
 
 export const VehicleForm:FC = async () => {
-  const makes = await getCarMakes({ cache: 'no-store' });
+  const vehicleMakes = await getCarMakes({ cache: 'no-store' });
 
-  console.log(makes);
+  if (!vehicleMakes.length) {
+    return <h2>no data</h2>;
+  }
 
   return (
-    <div>
-      <h1 className="">cars</h1>
-    </div>
+    <VehicleInputs vehicleMakes={vehicleMakes} />
   );
 };
