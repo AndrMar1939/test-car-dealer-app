@@ -1,6 +1,13 @@
+type NextFetchRequestConfig = RequestInit & {
+  nextConfig?: {
+    revalidate?: number | false;
+    tags?: string[];
+  };
+};
+
 export async function fetchClient<T>(
   url: string,
-  options?: RequestInit,
+  options?: NextFetchRequestConfig,
 ): Promise<T> {
   const response = await fetch(url, {
     headers: {
