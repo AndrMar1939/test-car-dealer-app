@@ -1,5 +1,6 @@
 import { fetchClient } from './clients';
-import { extractCarsMakers, prepareMakesStaticParams } from './helpers';
+import { extractCarsMakers, prepareMakesStaticParams, prepareResultPageData } from './helpers';
+import type { YearParams } from '@/types';
 
 const { BASE_URL } = process.env;
 
@@ -19,4 +20,14 @@ export async function fetchMakesStaticParams(options?: RequestInit) {
   ) as { Results?: unknown };
 
   return prepareMakesStaticParams(response);
+}
+
+export async function fetchResultPageData(params: YearParams) {
+  const { makeId, year } = params;
+
+  const response = await fetchClient<unknown>(
+    `${BASE_URL}/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`,
+  ) as { Results?: unknown };
+
+  return prepareResultPageData(response);
 }
