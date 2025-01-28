@@ -4,6 +4,10 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/eslint-recommended',
     'airbnb',
     'airbnb-typescript',
     'plugin:react/recommended',
@@ -18,7 +22,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react'],
   rules: {
     'no-undef': 'error',
     'react/react-in-jsx-scope': 0,
