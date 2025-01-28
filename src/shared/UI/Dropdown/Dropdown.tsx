@@ -1,11 +1,12 @@
 import { FC } from 'react';
+import type { DropdownOption } from '@/types';
 
 interface DropdownProps {
   id: string;
   label: string;
-  options: { value: string | number; label: string }[];
+  options: DropdownOption[];
   onChange: (value: number | string) => void;
-  value: number | string | null;
+  value: string;
 }
 
 export const Dropdown: FC<DropdownProps> = ({
@@ -27,8 +28,8 @@ export const Dropdown: FC<DropdownProps> = ({
       onChange={e => onChange(e.target.value)}
     >
       <option value="">
-        Select
-        {label.toLowerCase()}
+        {`Select ${label}`}
+
       </option>
       {options.map(option => (
         <option key={option.value} value={option.value}>

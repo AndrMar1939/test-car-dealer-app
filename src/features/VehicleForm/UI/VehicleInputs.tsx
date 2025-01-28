@@ -4,38 +4,31 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import type { VehicleMake } from '@/types';
-import { Dropdown } from '@/shared';
+import { Dropdown, createMakersOptions, createYearsOptions } from '@/shared';
 
-interface VehicleFormState {
-  selectedMakeId: string | null;
-  selectedYear: string | null;
+interface VehicleFormSchema {
+  selectedMakeId: string;
+  selectedYear: string;
 }
 
 interface VehicleInputsProps {
   vehicleMakes: VehicleMake[];
 }
 export const VehicleInputs: FC<VehicleInputsProps> = ({ vehicleMakes }) => {
-  const { control, watch } = useForm<VehicleFormState>({
+  const { control, watch } = useForm<VehicleFormSchema>({
     defaultValues: {
-      selectedMakeId: null,
-      selectedYear: null,
+      selectedMakeId: '',
+      selectedYear: '',
     },
   });
 
-  const currentYear = new Date().getFullYear();
-  const yearOptions = Array.from(
-    { length: currentYear - 2015 + 1 },
-    (_, i) => ({ value: 2015 + i, label: (2015 + i).toString() }),
-  );
-
-  const makeOptions = vehicleMakes.map(make => ({
-    value: make.MakeId,
-    label: make.MakeName,
-  }));
+  const yearOptions = createYearsOptions();
+  const makeOptions = createMakersOptions(vehicleMakes);
 
   const selectedMakeId = watch('selectedMakeId');
   const selectedYear = watch('selectedYear');
-  const isNextEnabled = selectedMakeId && selectedYear;
+
+  const isNextButtonEnabled = selectedMakeId && selectedYear;
 
   return (
     <form className="max-w-md mx-auto p-4 border rounded shadow-md">
@@ -72,7 +65,7 @@ export const VehicleInputs: FC<VehicleInputsProps> = ({ vehicleMakes }) => {
       <Link
         href="#"
         className={`block w-full text-center py-2 px-4 rounded mt-4 ${
-          isNextEnabled
+          isNextButtonEnabled
             ? 'bg-blue-500 text-white hover:bg-blue-600'
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
         }`}
