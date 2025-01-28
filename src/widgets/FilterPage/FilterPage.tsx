@@ -1,10 +1,11 @@
 import { FC, Suspense } from 'react';
+import { Loader, Container } from '@/shared';
 import { VehicleForm } from '@/features';
 
-const Loading = () => <div>loading</div>;
-
 export const FilterPage: FC = () => (
-  <Suspense fallback={<Loading />}>
-    <VehicleForm />
-  </Suspense>
+  <Container className="flex justify-center">
+    <Suspense fallback={<Loader />}>
+      <VehicleForm />
+    </Suspense>
+  </Container>
 );

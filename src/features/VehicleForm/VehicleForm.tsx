@@ -6,7 +6,7 @@ export const VehicleForm:FC = async () => {
   const vehicleMakes = await getCarMakes({ cache: 'no-store' });
 
   if (!vehicleMakes.length) {
-    return <h2>no data</h2>;
+    return <h2>No data</h2>;
   }
 
   return (

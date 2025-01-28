@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import type { VehicleMake } from '@/types';
-import { Dropdown, createMakersOptions, createYearsOptions } from '@/shared';
+import {
+  Dropdown, createMakersOptions, createYearsOptions, Routes,
+} from '@/shared';
 
 interface VehicleFormSchema {
   selectedMakeId: string;
@@ -28,7 +30,8 @@ export const VehicleInputs: FC<VehicleInputsProps> = ({ vehicleMakes }) => {
   const selectedMakeId = watch('selectedMakeId');
   const selectedYear = watch('selectedYear');
 
-  const isNextButtonEnabled = selectedMakeId && selectedYear;
+  const isNextLinkEnabled = selectedMakeId && selectedYear;
+  const nextLinkHref = `${Routes.RESULT}/${selectedMakeId}/${selectedYear}`;
 
   return (
     <form className="max-w-md mx-auto p-4 border rounded shadow-md">
@@ -63,9 +66,9 @@ export const VehicleInputs: FC<VehicleInputsProps> = ({ vehicleMakes }) => {
       />
 
       <Link
-        href="#"
+        href={nextLinkHref}
         className={`block w-full text-center py-2 px-4 rounded mt-4 ${
-          isNextButtonEnabled
+          isNextLinkEnabled
             ? 'bg-blue-500 text-white hover:bg-blue-600'
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
         }`}
