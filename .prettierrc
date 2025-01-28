@@ -1,0 +1,11 @@
+{
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["cn"],
+  "tailwindConfig": "./tailwind.config.ts",
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 80,
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "endOfLine": "auto"
+}
