@@ -1,3 +1,20 @@
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
+import { getCarMakes } from '@/shared/carsAPI';
 
-export const FilterPage: FC = () => <h1 className="">Car Dealer App</h1>;
+const CarMakesContent = async () => {
+  const makes = await getCarMakes({ cache: 'no-store' });
+  console.log(makes);
+  return (
+    <div>
+      <h1 className="">Car Dealer App</h1>
+    </div>
+  );
+};
+
+const Loading = () => <div>loading</div>;
+
+export const FilterPage: FC = () => (
+  <Suspense fallback={<Loading />}>
+    <CarMakesContent />
+  </Suspense>
+);
