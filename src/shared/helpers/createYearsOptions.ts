@@ -1,6 +1,5 @@
 import { DropdownOption } from '@/types';
-
-const START_YEAR = 2015;
+import { START_YEAR } from '../constants/constants';
 
 export const createYearsOptions = (): DropdownOption[] => {
   const currentYear = new Date().getFullYear();

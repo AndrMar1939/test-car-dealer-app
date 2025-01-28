@@ -9,3 +9,7 @@ export { createMakersOptions } from './helpers/createMakersOptions';
 export { createYearsOptions } from './helpers/createYearsOptions';
 
 export { Routes } from './constants/routes';
+
+export * from './constants/constants';
+
+export { createYearsStaticParams } from './helpers/createYearsStaticParams';
