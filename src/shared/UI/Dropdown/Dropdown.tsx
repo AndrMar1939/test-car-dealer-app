@@ -23,7 +23,7 @@ export const Dropdown: FC<DropdownProps> = ({
 
     <select
       id={id}
-      className="w-full border rounded p-2"
+      className="w-full border rounded p-2 cursor-pointer"
       value={value || ''}
       onChange={e => onChange(e.target.value)}
     >
